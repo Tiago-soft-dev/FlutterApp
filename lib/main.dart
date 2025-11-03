@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'components.dart';
 
+import 'theme.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -30,7 +32,11 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: MaterialTheme.lightScheme(),
+      ),
+      darkTheme: ThemeData(
+        colorScheme: MaterialTheme.darkScheme(),
+        useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -95,37 +101,37 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
 
       drawer: Drawer(
-       child: SafeArea(
-         child: ListView(
-           padding: EdgeInsets.zero,
-           children: [
-             DrawerHeader(
-               decoration: BoxDecoration(
-                 color: Theme.of(context).colorScheme.primaryContainer,
-               ),
-               child: Align(
-                 alignment: Alignment.bottomLeft,
-                 child: Text(
-                   'Menu',
-                   style: Theme.of(context).textTheme.headlineSmall,
-                 ),
-               ),
-             ),
-             ListTile(
-               leading: const Icon(Icons.pages),
-               title: const Text('Componentes'),
-               onTap: () {
-                 Navigator.pop(context); // fecha o drawer
-                 Navigator.push(
-                   context,
-                   MaterialPageRoute(builder: (_) => const ComponentsPage()),
-                 );
-               },
-             ),
-           ],
-         ),
-       ),
-     ),
+        child: SafeArea(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.primaryContainer,
+                ),
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Text(
+                    'Menu',
+                    style: Theme.of(context).textTheme.headlineSmall,
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: const Icon(Icons.pages),
+                title: const Text('Componentes'),
+                onTap: () {
+                  Navigator.pop(context); // fecha o drawer
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const ComponentsPage()),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
 
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
